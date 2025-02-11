@@ -4,13 +4,15 @@ import { Request, Response } from "express";
 const initPayment = async (req: Request, res: Response) => {
   const { total } = req.body;
   if (!total) {
+    console.log(total);
+
     res.status(400).json("total is missing");
     return;
   }
   const cart = {
     id: "123",
     currency: "SAR",
-    amount: 66,
+    amount: total,
     description: "Electronics",
   };
 
@@ -77,4 +79,11 @@ const handleCallback = (req: Request, res: Response) => {
   console.log(req.body);
 };
 
-export { initPayment, handleCallback };
+const handleResponse = (req: Request, res: Response) => {
+  const { respMessage } = req.body;
+  console.log("response:", req.body);
+  res.redirect(
+    `https://ecommerce-black-pi-96.vercel.app/payment-response/${respMessage}`
+  );
+};
+export { initPayment, handleCallback, handleResponse };
