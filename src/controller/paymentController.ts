@@ -76,12 +76,12 @@ const initPayment = async (req: Request, res: Response) => {
 };
 
 const handleCallback = (req: Request, res: Response) => {
-  console.log(req.body);
+  console.log("callback:",req.body);
 };
 
 const handleResponse = (req: Request, res: Response) => {
   const { respMessage } = req.body;
-  console.log("response:", req.body);
+  console.log("response:", req.body,respMessage);
   res.redirect(
     `https://ecommerce-black-pi-96.vercel.app/payment-response/${respMessage}`
   );
