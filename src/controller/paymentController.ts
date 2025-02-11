@@ -100,9 +100,7 @@ const handleCallback = (req: Request, res: Response) => {
 
 const handleResponse = (req: Request, res: Response) => {
   const { respMessage } = req.body;
-  console.log("Headers:", req.headers);
-  console.log("params:", req.params);
-  console.log("response:", req.body, respMessage);
+  console.log("response:", req.body);
   res.redirect(
     `https://ecommerce-black-pi-96.vercel.app/payment-response/${respMessage}`
   );
