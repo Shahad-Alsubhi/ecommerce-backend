@@ -4,6 +4,7 @@ import crypto from "crypto";
 const verifySignature = (req: Request, res: Response, next: NextFunction) => {
   const { signature: requestSignature } = req.headers;
   const payload = req.body;
+  console.log(payload, requestSignature);
 
   if (!payload || !requestSignature) {
     res.status(401).json({ message: `Invalid signature` });
