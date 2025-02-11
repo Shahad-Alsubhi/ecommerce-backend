@@ -89,14 +89,19 @@ const handleCallback = (req: Request, res: Response) => {
 
   console.log(
     `The order with ID ${cart_id} and transaction number ${tran_ref} was ${
-      response_status === "A" ? "approved" : response_status === "C" ? "cancelled" : "failed"
+      response_status === "A"
+        ? "approved"
+        : response_status === "C"
+        ? "cancelled"
+        : "failed"
     } at ${transaction_time}. Message: ${response_message} (Code: ${response_code})`
   );
-  
 };
 
 const handleResponse = (req: Request, res: Response) => {
   const { respMessage } = req.body;
+  console.log("Headers:", req.headers);
+  console.log("params:", req.params);
   console.log("response:", req.body, respMessage);
   res.redirect(
     `https://ecommerce-black-pi-96.vercel.app/payment-response/${respMessage}`
